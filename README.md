@@ -1,4 +1,4 @@
-# YOU MUST CREDIT MRHOOTYHOOT1 IN YOUR SERVER INFO IF YOU USE THIS PLUGIN
+
 # Commands:
 ## Client commands:
 ### .name - Sets your name.
