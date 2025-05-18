@@ -473,6 +473,11 @@
             Gets or sets a value indicating the <see cref="T:Exiled.API.Features.Player"/>'s size.
             </summary>
         </member>
+        <member name="P:Exiled.CustomRoles.API.Features.CustomRole.Gravity">
+            <summary>
+            Gets or sets a value indicating the <see cref="T:Exiled.API.Features.Player"/>'s gravity.
+            </summary>
+        </member>
         <member name="P:Exiled.CustomRoles.API.Features.CustomRole.CustomRoleFFMultiplier">
             <summary>
             Gets or sets a <see cref="T:System.Collections.Generic.Dictionary`2"/> containing cached <see cref="T:System.String"/> and their  <see cref="T:System.Collections.Generic.Dictionary`2"/> which is cached Role with FF multiplier.

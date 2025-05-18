@@ -37,7 +37,6 @@ C:\Users\Liamc\RiderProjects\Names&CinfoPlugin\Nameplugin\bin\Debug\Exiled.Event
 C:\Users\Liamc\RiderProjects\Names&CinfoPlugin\Nameplugin\bin\Debug\Exiled.Loader.dll
 C:\Users\Liamc\RiderProjects\Names&CinfoPlugin\Nameplugin\bin\Debug\Exiled.Permissions.dll
 C:\Users\Liamc\RiderProjects\Names&CinfoPlugin\Nameplugin\bin\Debug\NorthwoodLib.dll
-C:\Users\Liamc\RiderProjects\Names&CinfoPlugin\Nameplugin\bin\Debug\PluginAPI.dll
 C:\Users\Liamc\RiderProjects\Names&CinfoPlugin\Nameplugin\bin\Debug\YamlDotNet.dll
 C:\Users\Liamc\RiderProjects\Names&CinfoPlugin\Nameplugin\bin\Debug\0Harmony.pdb
 C:\Users\Liamc\RiderProjects\Names&CinfoPlugin\Nameplugin\bin\Debug\0Harmony.xml
@@ -55,3 +54,4 @@ C:\Users\Liamc\RiderProjects\Names&CinfoPlugin\Nameplugin\bin\Debug\Exiled.Custo
 C:\Users\Liamc\RiderProjects\Names&CinfoPlugin\Nameplugin\bin\Debug\Exiled.CustomRoles.dll
 C:\Users\Liamc\RiderProjects\Names&CinfoPlugin\Nameplugin\bin\Debug\Exiled.CustomItems.xml
 C:\Users\Liamc\RiderProjects\Names&CinfoPlugin\Nameplugin\bin\Debug\Exiled.CustomRoles.xml
+C:\Users\Liamc\RiderProjects\Names&CinfoPlugin\Nameplugin\bin\Debug\LabApi.dll
