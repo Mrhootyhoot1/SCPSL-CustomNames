@@ -149,7 +149,7 @@
         </member>
         <member name="P:Exiled.Permissions.Config.ShouldDebugBeShown">
             <summary>
-            Gets a value indicating whether the debug should be shown or not.
+            Gets a value indicating whether the debug should be shown.
             </summary>
         </member>
         <member name="P:Exiled.Permissions.Config.Folder">
@@ -202,7 +202,7 @@
             </summary>
             <param name="sender">The sender to be checked.</param>
             <param name="permission">The permission to be checked.</param>
-            <returns>Returns a value indicating whether the user has the permission or not.</returns>
+            <returns>Returns a value indicating whether the user has the permission.</returns>
         </member>
         <member name="M:Exiled.Permissions.Extensions.Permissions.CheckPermission(CommandSender,System.String)">
             <summary>
@@ -210,7 +210,7 @@
             </summary>
             <param name="sender">The sender to be checked.</param>
             <param name="permission">The permission to be checked.</param>
-            <returns>Returns a value indicating whether the user has the permission or not.</returns>
+            <returns>Returns a value indicating whether the user has the permission.</returns>
         </member>
         <member name="M:Exiled.Permissions.Extensions.Permissions.CheckPermission(Exiled.API.Features.Player,System.String)">
             <summary>
@@ -220,40 +220,13 @@
             <param name="permission">The permission to be checked.</param>
             <returns><see langword="true"/> if the player's current or native group has permissions; otherwise, <see langword="false"/>.</returns>
         </member>
-        <member name="M:Exiled.Permissions.Extensions.Permissions.CheckPermission(CommandSystem.ICommandSender,System.String,System.String@)">
-            <summary>
-            Checks a sender's permission.
-            </summary>
-            <param name="sender">The sender to be checked.</param>
-            <param name="permission">The permission to be checked.</param>
-            <param name="response">A response. Contains text only if function returned <see langword="false"/>, otherwise will be <see langword="null"/>.</param>
-            <returns>Returns a value indicating whether the user has the permission or not.</returns>
-        </member>
-        <member name="M:Exiled.Permissions.Extensions.Permissions.CheckPermission(CommandSender,System.String,System.String@)">
-            <summary>
-            Checks a sender's permission.
-            </summary>
-            <param name="sender">The sender to be checked.</param>
-            <param name="permission">The permission to be checked.</param>
-            <param name="response">A response. Contains text only if function returned <see langword="false"/>, otherwise will be <see langword="null"/>.</param>
-            <returns>Returns a value indicating whether the user has the permission or not.</returns>
-        </member>
-        <member name="M:Exiled.Permissions.Extensions.Permissions.CheckPermission(Exiled.API.Features.Player,System.String,System.String@)">
-            <summary>
-            Checks a sender's permission.
-            </summary>
-            <param name="sender">The sender to be checked.</param>
-            <param name="permission">The permission to be checked.</param>
-            <param name="response">A response. Contains text only if function returned <see langword="false"/>, otherwise will be <see langword="null"/>.</param>
-            <returns>Returns a value indicating whether the user has the permission or not.</returns>
-        </member>
         <member name="M:Exiled.Permissions.Extensions.Permissions.CheckPermission(Exiled.API.Features.Player,PlayerPermissions[])">
             <summary>
             Checks a player's permission.
             </summary>
             <param name="player">The player to be checked.</param>
             <param name="permissions">The permission for checking.</param>
-            <returns>Returns a value indicating whether the user has the permission or not.</returns>
+            <returns>Returns a value indicating whether the user has the permission.</returns>
         </member>
         <member name="T:Exiled.Permissions.Features.Group">
             <summary>
@@ -262,7 +235,7 @@
         </member>
         <member name="P:Exiled.Permissions.Features.Group.IsDefault">
             <summary>
-            Gets or sets a value indicating whether group is the default one or not.
+            Gets or sets a value indicating whether group is the default.
             </summary>
         </member>
         <member name="P:Exiled.Permissions.Features.Group.Inheritance">
@@ -278,16 +251,6 @@
         <member name="P:Exiled.Permissions.Features.Group.CombinedPermissions">
             <summary>
             Gets the combined permissions of the group plus all inherited groups.
-            </summary>
-        </member>
-        <member name="P:Exiled.Permissions.Features.Group.DisabledPermissions">
-            <summary>
-            Gets or sets the disabled group permissions.
-            </summary>
-        </member>
-        <member name="P:Exiled.Permissions.Features.Group.CombinedDisabledPermissions">
-            <summary>
-            Gets the combined disabled permissions of the group plus all inherited groups.
             </summary>
         </member>
         <member name="T:Exiled.Permissions.Permissions">

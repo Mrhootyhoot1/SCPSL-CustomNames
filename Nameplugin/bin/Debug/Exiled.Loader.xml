@@ -27,12 +27,12 @@
         </member>
         <member name="P:Exiled.Loader.Config.ShouldLoadOutdatedExiled">
             <summary>
-            Gets or sets a value indicating whether outdated Exiled versions should be loaded or not.
+            Gets or sets a value indicating whether outdated Exiled versions should be loaded.
             </summary>
         </member>
         <member name="P:Exiled.Loader.Config.ShouldLoadOutdatedPlugins">
             <summary>
-            Gets or sets a value indicating whether outdated plugins should be loaded or not.
+            Gets or sets a value indicating whether outdated plugins should be loaded.
             </summary>
         </member>
         <member name="P:Exiled.Loader.Config.ExiledDirectoryPath">
@@ -50,14 +50,19 @@
             Gets or sets the config files distribution type.
             </summary>
         </member>
-        <member name="P:Exiled.Loader.Config.ShouldDownloadTestingReleases">
+        <member name="P:Exiled.Loader.Config.ScalarStyle">
             <summary>
-            Gets or sets a value indicating whether testing releases have to be downloaded or not.
+            Gets or sets the quotes wrapper type.
             </summary>
         </member>
-        <member name="P:Exiled.Loader.Config.ValidateGameVersionBeforeDownloading">
+        <member name="P:Exiled.Loader.Config.MultiLineScalarStyle">
             <summary>
-            Gets or sets a value indicating whether the game version should be validated before downloading the release.
+            Gets or sets the quotes wrapper type.
+            </summary>
+        </member>
+        <member name="P:Exiled.Loader.Config.ShouldDownloadTestingReleases">
+            <summary>
+            Gets or sets a value indicating whether testing releases have to be downloaded.
             </summary>
         </member>
         <member name="P:Exiled.Loader.Config.ExcludeAssemblies">
@@ -73,11 +78,6 @@
         <member name="T:Exiled.Loader.ConfigManager">
             <summary>
             Used to handle plugin configs.
-            </summary>
-        </member>
-        <member name="M:Exiled.Loader.ConfigManager.LoadConfigSubsystem">
-            <summary>
-            Implements the <see cref="T:Exiled.API.Features.ConfigSubsystem"/>.
             </summary>
         </member>
         <member name="M:Exiled.Loader.ConfigManager.LoadSorted(System.String)">
@@ -110,14 +110,6 @@
             <param name="plugin">The plugin which its config will be loaded.</param>
             <returns>The <see cref="T:Exiled.API.Interfaces.IConfig"/> of the plugin.</returns>
         </member>
-        <member name="M:Exiled.Loader.ConfigManager.ValidateConfig(Exiled.API.Interfaces.IPlugin{Exiled.API.Interfaces.IConfig},Exiled.API.Interfaces.IConfig)">
-            <summary>
-            Validates a config.
-            </summary>
-            <param name="plugin">The plugin which its config will be validated.</param>
-            <param name="config">A <see cref="T:Exiled.API.Interfaces.IConfig"/> to validate.</param>
-            <returns>Returns a validated config.</returns>
-        </member>
         <member name="M:Exiled.Loader.ConfigManager.Reload">
             <summary>
             Reads, loads, and saves plugin configs.
@@ -129,7 +121,7 @@
             Saves default distribution configs.
             </summary>
             <param name="configs">The configs to be saved, already serialized in yaml format.</param>
-            <returns>Returns a value indicating whether the configs have been saved successfully or not.</returns>
+            <returns>Returns a value indicating whether the configs have been saved successfully.</returns>
         </member>
         <member name="M:Exiled.Loader.ConfigManager.SaveSeparatedConfig(System.String,System.String)">
             <summary>
@@ -137,14 +129,14 @@
             </summary>
             <param name="pluginPrefix">The prefix of the plugin which its config is going to be saved.</param>
             <param name="configs">The configs to be saved, already serialized in yaml format.</param>
-            <returns>Returns a value indicating whether the configs have been saved successfully or not.</returns>
+            <returns>Returns a value indicating whether the configs have been saved successfully.</returns>
         </member>
         <member name="M:Exiled.Loader.ConfigManager.Save(System.Collections.Generic.SortedDictionary{System.String,Exiled.API.Interfaces.IConfig})">
             <summary>
             Saves plugin configs.
             </summary>
             <param name="configs">The configs to be saved.</param>
-            <returns>Returns a value indicating whether the configs have been saved successfully or not.</returns>
+            <returns>Returns a value indicating whether the configs have been saved successfully.</returns>
         </member>
         <member name="M:Exiled.Loader.ConfigManager.Read">
             <summary>
@@ -156,12 +148,188 @@
             <summary>
             Clears the configs.
             </summary>
-            <returns>Returns a value indicating whether configs have been cleared successfully or not.</returns>
+            <returns>Returns a value indicating whether configs have been cleared successfully.</returns>
         </member>
         <member name="M:Exiled.Loader.ConfigManager.ReloadRemoteAdmin">
             <summary>
             Reloads RemoteAdmin configs.
             </summary>
+        </member>
+        <member name="T:Exiled.Loader.Features.Configs.CommentGatheringTypeInspector">
+            <summary>
+            Source: https://dotnetfiddle.net/8M6iIE.
+            </summary>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CommentGatheringTypeInspector.#ctor(YamlDotNet.Serialization.ITypeInspector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Exiled.Loader.Features.Configs.CommentGatheringTypeInspector"/> class.
+            </summary>
+            <param name="innerTypeDescriptor">The inner type description instance.</param>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CommentGatheringTypeInspector.GetProperties(System.Type,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Exiled.Loader.Features.Configs.CommentsObjectDescriptor">
+            <summary>
+            Source: https://dotnetfiddle.net/8M6iIE.
+            </summary>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CommentsObjectDescriptor.#ctor(YamlDotNet.Serialization.IObjectDescriptor,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Exiled.Loader.Features.Configs.CommentsObjectDescriptor"/> class.
+            </summary>
+            <param name="innerDescriptor">The inner descriptor instance.</param>
+            <param name="comment">The comment to be written.</param>
+        </member>
+        <member name="P:Exiled.Loader.Features.Configs.CommentsObjectDescriptor.Comment">
+            <summary>
+            Gets the comment to be written.
+            </summary>
+        </member>
+        <member name="P:Exiled.Loader.Features.Configs.CommentsObjectDescriptor.Value">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IObjectDescriptor" />
+        </member>
+        <member name="P:Exiled.Loader.Features.Configs.CommentsObjectDescriptor.Type">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IObjectDescriptor" />
+        </member>
+        <member name="P:Exiled.Loader.Features.Configs.CommentsObjectDescriptor.StaticType">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IObjectDescriptor" />
+        </member>
+        <member name="P:Exiled.Loader.Features.Configs.CommentsObjectDescriptor.ScalarStyle">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IObjectDescriptor" />
+        </member>
+        <member name="T:Exiled.Loader.Features.Configs.CommentsObjectGraphVisitor">
+            <summary>
+            Source: https://dotnetfiddle.net/8M6iIE.
+            </summary>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CommentsObjectGraphVisitor.#ctor(YamlDotNet.Serialization.IObjectGraphVisitor{YamlDotNet.Core.IEmitter})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Exiled.Loader.Features.Configs.CommentsObjectGraphVisitor"/> class.
+            </summary>
+            <param name="nextVisitor">The next visitor instance.</param>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CommentsObjectGraphVisitor.EnterMapping(YamlDotNet.Serialization.IPropertyDescriptor,YamlDotNet.Serialization.IObjectDescriptor,YamlDotNet.Core.IEmitter)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Exiled.Loader.Features.Configs.CommentsPropertyDescriptor">
+            <summary>
+            Source: https://dotnetfiddle.net/8M6iIE.
+            </summary>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CommentsPropertyDescriptor.#ctor(YamlDotNet.Serialization.IPropertyDescriptor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Exiled.Loader.Features.Configs.CommentsPropertyDescriptor"/> class.
+            </summary>
+            <param name="baseDescriptor">The base descriptor instance.</param>
+        </member>
+        <member name="P:Exiled.Loader.Features.Configs.CommentsPropertyDescriptor.Name">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IPropertyDescriptor"/>
+        </member>
+        <member name="P:Exiled.Loader.Features.Configs.CommentsPropertyDescriptor.Type">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IPropertyDescriptor"/>
+        </member>
+        <member name="P:Exiled.Loader.Features.Configs.CommentsPropertyDescriptor.TypeOverride">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IPropertyDescriptor"/>
+        </member>
+        <member name="P:Exiled.Loader.Features.Configs.CommentsPropertyDescriptor.Order">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IPropertyDescriptor"/>
+        </member>
+        <member name="P:Exiled.Loader.Features.Configs.CommentsPropertyDescriptor.ScalarStyle">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IPropertyDescriptor"/>
+        </member>
+        <member name="P:Exiled.Loader.Features.Configs.CommentsPropertyDescriptor.CanWrite">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IPropertyDescriptor"/>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CommentsPropertyDescriptor.Write(System.Object,System.Object)">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IPropertyDescriptor"/>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CommentsPropertyDescriptor.GetCustomAttribute``1">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IPropertyDescriptor"/>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CommentsPropertyDescriptor.Read(System.Object)">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IPropertyDescriptor"/>
+        </member>
+        <member name="T:Exiled.Loader.Features.Configs.CustomConverters.AttachmentIdentifiersConverter">
+            <summary>
+            Converts a <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:InventorySystem.Items.Firearms.Attachments.AttachmentName"/> to Yaml configs and vice versa.
+            </summary>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CustomConverters.AttachmentIdentifiersConverter.Accepts(System.Type)">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IYamlTypeConverter" />
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CustomConverters.AttachmentIdentifiersConverter.ReadYaml(YamlDotNet.Core.IParser,System.Type)">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IYamlTypeConverter" />
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CustomConverters.AttachmentIdentifiersConverter.WriteYaml(YamlDotNet.Core.IEmitter,System.Object,System.Type)">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IYamlTypeConverter" />
+        </member>
+        <member name="T:Exiled.Loader.Features.Configs.CustomConverters.ColorConverter">
+            <summary>
+            Converts <see cref="T:UnityEngine.Color"/> to Yaml configs and vice versa.
+            </summary>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CustomConverters.ColorConverter.Accepts(System.Type)">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IYamlTypeConverter" />
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CustomConverters.ColorConverter.ReadYaml(YamlDotNet.Core.IParser,System.Type)">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IYamlTypeConverter" />
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CustomConverters.ColorConverter.WriteYaml(YamlDotNet.Core.IEmitter,System.Object,System.Type)">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IYamlTypeConverter" />
+        </member>
+        <member name="T:Exiled.Loader.Features.Configs.CustomConverters.VectorsConverter">
+            <summary>
+            Converts a Vector2, Vector3 or Vector4 to Yaml configs and vice versa.
+            </summary>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CustomConverters.VectorsConverter.Accepts(System.Type)">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IYamlTypeConverter" />
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CustomConverters.VectorsConverter.ReadYaml(YamlDotNet.Core.IParser,System.Type)">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IYamlTypeConverter" />
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.CustomConverters.VectorsConverter.WriteYaml(YamlDotNet.Core.IEmitter,System.Object,System.Type)">
+            <inheritdoc cref="T:YamlDotNet.Serialization.IYamlTypeConverter" />
+        </member>
+        <member name="T:Exiled.Loader.Features.Configs.TypeAssigningEventEmitter">
+            <summary>
+            Event emitter which wraps all strings in double quotes.
+            </summary>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.TypeAssigningEventEmitter.#ctor(YamlDotNet.Serialization.IEventEmitter)">
+            <inheritdoc cref="T:YamlDotNet.Serialization.EventEmitters.ChainedEventEmitter"/>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.TypeAssigningEventEmitter.Emit(YamlDotNet.Serialization.ScalarEventInfo,YamlDotNet.Core.IEmitter)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Exiled.Loader.Features.Configs.UnderscoredNamingConvention">
+            <inheritdoc cref="T:YamlDotNet.Serialization.NamingConventions.UnderscoredNamingConvention"/>
+        </member>
+        <member name="P:Exiled.Loader.Features.Configs.UnderscoredNamingConvention.Instance">
+            <inheritdoc cref="F:YamlDotNet.Serialization.NamingConventions.UnderscoredNamingConvention.Instance"/>
+        </member>
+        <member name="P:Exiled.Loader.Features.Configs.UnderscoredNamingConvention.Properties">
+            <summary>
+            Gets the list.
+            </summary>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.UnderscoredNamingConvention.Apply(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Exiled.Loader.Features.Configs.ValidatingNodeDeserializer">
+            <summary>
+            Basic configs validation.
+            </summary>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.ValidatingNodeDeserializer.#ctor(YamlDotNet.Serialization.INodeDeserializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Exiled.Loader.Features.Configs.ValidatingNodeDeserializer"/> class.
+            </summary>
+            <param name="nodeDeserializer">The node deserializer instance.</param>
+        </member>
+        <member name="M:Exiled.Loader.Features.Configs.ValidatingNodeDeserializer.Deserialize(YamlDotNet.Core.IParser,System.Type,System.Func{YamlDotNet.Core.IParser,System.Type,System.Object},System.Object@)">
+            <inheritdoc cref="T:YamlDotNet.Serialization.INodeDeserializer"/>
         </member>
         <member name="T:Exiled.Loader.Features.LoaderMessages">
             <summary>
@@ -175,17 +343,17 @@
         </member>
         <member name="P:Exiled.Loader.Features.LoaderMessages.EasterEgg">
             <summary>
-            Gets the easter egg loader message.
+            Gets the Easter egg loader message.
             </summary>
         </member>
         <member name="P:Exiled.Loader.Features.LoaderMessages.Christmas">
             <summary>
-            Gets the christmas loader message.
+            Gets the Christmas loader message.
             </summary>
         </member>
         <member name="P:Exiled.Loader.Features.LoaderMessages.Halloween">
             <summary>
-            Gets the halloween loader message.
+            Gets the Halloween loader message.
             </summary>
         </member>
         <member name="M:Exiled.Loader.Features.LoaderMessages.GetMessage">
@@ -273,11 +441,6 @@
         <member name="F:Exiled.Loader.GHApi.Models.Release.Assets">
             <summary>
             The release's assets.
-            </summary>
-        </member>
-        <member name="F:Exiled.Loader.GHApi.Models.Release.Description">
-            <summary>
-            The release's description.
             </summary>
         </member>
         <member name="M:Exiled.Loader.GHApi.Models.Release.#ctor(System.Int32,System.String,System.Boolean,System.DateTime,Exiled.Loader.GHApi.Models.ReleaseAsset[])">
@@ -404,6 +567,16 @@
             Gets plugin dependencies.
             </summary>
         </member>
+        <member name="P:Exiled.Loader.Loader.Serializer">
+            <summary>
+            Gets or sets the serializer for configs and translations.
+            </summary>
+        </member>
+        <member name="P:Exiled.Loader.Loader.Deserializer">
+            <summary>
+            Gets or sets the deserializer for configs and translations.
+            </summary>
+        </member>
         <member name="M:Exiled.Loader.Loader.LoadPlugins">
             <summary>
             Loads all plugins.
@@ -422,20 +595,6 @@
             </summary>
             <param name="assembly">The plugin assembly.</param>
             <returns>Returns the created plugin instance or <see langword="null"/>.</returns>
-        </member>
-        <member name="M:Exiled.Loader.Loader.GetPlugin``1">
-            <summary>
-            Gets an <see cref="T:Exiled.API.Features.Plugin`1"/> instance.
-            </summary>
-            <typeparam name="T">A <see cref="T:Exiled.API.Features.Plugin`1"/> class to get the instance of.</typeparam>
-            <returns>Returns the instance of a <see cref="T:Exiled.API.Features.Plugin`1"/>.</returns>
-        </member>
-        <member name="M:Exiled.Loader.Loader.GetConfig``1">
-            <summary>
-            Gets an <see cref="T:Exiled.API.Interfaces.IConfig"/> instance.
-            </summary>
-            <typeparam name="T">A <see cref="T:Exiled.API.Interfaces.IConfig"/> class to get the instance of.</typeparam>
-            <returns>Returns the instance of a <see cref="T:Exiled.API.Interfaces.IConfig"/>.</returns>
         </member>
         <member name="M:Exiled.Loader.Loader.EnablePlugins">
             <summary>
@@ -634,7 +793,7 @@
             Loads the translations of a plugin based on the actual distribution.
             </summary>
             <param name="plugin">The plugin which its translation has to be loaded.</param>
-            <param name="rawTranslations">The raw translations to check whether or not the plugin already has a translation config.</param>
+            <param name="rawTranslations">The raw translations to check whether the plugin already has a translation config.</param>
             <returns>The <see cref="T:Exiled.API.Interfaces.ITranslation"/> of the desired plugin.</returns>
         </member>
         <member name="M:Exiled.Loader.TranslationManager.Reload">
@@ -648,7 +807,7 @@
             Saves default distribution translations.
             </summary>
             <param name="translations">The translations to be saved, already serialized in yaml format.</param>
-            <returns>Returns a value indicating whether the translations have been saved successfully or not.</returns>
+            <returns>Returns a value indicating whether the translations have been saved successfully.</returns>
         </member>
         <member name="M:Exiled.Loader.TranslationManager.SaveSeparatedTranslation(System.String,System.String)">
             <summary>
@@ -656,14 +815,14 @@
             </summary>
             <param name="pluginPrefix">The prefix of the plugin which its translation is going to be saved.</param>
             <param name="translations">The translations to be saved, already serialized in yaml format.</param>
-            <returns>Returns a value indicating whether the translations have been saved successfully or not.</returns>
+            <returns>Returns a value indicating whether the translations have been saved successfully.</returns>
         </member>
         <member name="M:Exiled.Loader.TranslationManager.Save(System.Collections.Generic.SortedDictionary{System.String,Exiled.API.Interfaces.ITranslation})">
             <summary>
             Saves plugin translations.
             </summary>
             <param name="translations">The translations to be saved.</param>
-            <returns>Returns a value indicating whether the translations have been saved successfully or not.</returns>
+            <returns>Returns a value indicating whether the translations have been saved successfully.</returns>
         </member>
         <member name="M:Exiled.Loader.TranslationManager.Read">
             <summary>
@@ -675,14 +834,14 @@
             <summary>
             Clears the translations.
             </summary>
-            <returns>Returns a value indicating whether translations have been cleared successfully or not.</returns>
+            <returns>Returns a value indicating whether translations have been cleared successfully.</returns>
         </member>
         <member name="M:Exiled.Loader.TranslationManager.LoadDefaultTranslation(Exiled.API.Interfaces.IPlugin{Exiled.API.Interfaces.IConfig},System.Collections.Generic.Dictionary{System.String,System.Object})">
             <summary>
             Loads the translations of a plugin based on the default distribution.
             </summary>
             <param name="plugin">The plugin which its translation has to be loaded.</param>
-            <param name="rawTranslations">The raw translations to check whether or not the plugin already has a translation config.</param>
+            <param name="rawTranslations">The raw translations to check whether the plugin already has a translation config.</param>
             <returns>The <see cref="T:Exiled.API.Interfaces.ITranslation"/> of the desired plugin.</returns>
         </member>
         <member name="M:Exiled.Loader.TranslationManager.LoadSeparatedTranslation(Exiled.API.Interfaces.IPlugin{Exiled.API.Interfaces.IConfig})">
@@ -721,49 +880,51 @@
         </member>
         <member name="M:Exiled.Loader.Updater.CreateHttpClient">
             <summary>
-            Creates a HTTP Client, and checks at the Exiled-Team GitHub repository.
+            Creates a HTTP Client, and checks at the ExMod-Team GitHub repository.
             </summary>
             <returns>Client determining if it was successful connecting to the Exiled GitHub repository.</returns>
         </member>
-        <member name="M:Exiled.Loader.Updater.FindUpdate(System.Net.Http.HttpClient,Exiled.Loader.Models.NewVersion@)">
+        <member name="M:Exiled.Loader.Updater.FindUpdate(System.Net.Http.HttpClient,System.Boolean,Exiled.Loader.Models.NewVersion@)">
             <summary>
             Finds an update using the client.
             </summary>
-            <param name="client">The HTTP Client.</param>
-            <param name="newVersion"> Whether there is a new version of EXILED.</param>
-            <returns>Whether there is an update.</returns>
+            <param name="client"> is the HTTP Client.</param>
+            <param name="forced"> if the detection was forced.</param>
+            <param name="newVersion"> if there is a new version of EXILED.</param>
+            <returns>Returns true if there is an update, otherwise false.</returns>
         </member>
         <member name="M:Exiled.Loader.Updater.Update(System.Net.Http.HttpClient,Exiled.Loader.Models.NewVersion)">
             <summary>
             Updates the client's version of Exiled.
             </summary>
-            <param name="client">The HTTP Client.</param>
-            <param name="newVersion">The updated version of Exiled.</param>
+            <param name="client"> is the HTTP Client.</param>
+            <param name="newVersion"> is the updated version of Exiled.</param>
         </member>
         <member name="M:Exiled.Loader.Updater.TagReleases(Exiled.Loader.GHApi.Models.Release[])">
             <summary>
             Gets the releases of Exiled.
             </summary>
-            <param name="releases">Gets the array of releases that has been made.</param>
+            <param name="releases"> gets the array of releases that has been made.</param>
             <returns>The last item in the array, which is the newest version of Exiled.</returns>
         </member>
-        <member name="M:Exiled.Loader.Updater.FindRelease(Exiled.Loader.Models.TaggedRelease[],Exiled.Loader.GHApi.Models.Release@,Exiled.Loader.Models.ExiledLib)">
+        <member name="M:Exiled.Loader.Updater.FindRelease(Exiled.Loader.Models.TaggedRelease[],Exiled.Loader.GHApi.Models.Release@,Exiled.Loader.Models.ExiledLib,System.Boolean)">
             <summary>
-            Finds the latest release.
+            Is able to find the release specificed.
             </summary>
-            <param name="releases">The list of releases (array).</param>
-            <param name="release"> The most recent release of Exiled.</param>
-            <param name="smallestVersion">Finds the smallest version of the Exiled Library.</param>
-            <returns>Whether the specific release was found.</returns>
+            <param name="releases"> is the list of releases (array).</param>
+            <param name="release"> is the most recent release of Exiled.</param>
+            <param name="smallestVersion"> finds the smallest version of the Exiled Library.</param>
+            <param name="forced"> if this update was forced or not.</param>
+            <returns>the if the specific release was found or not.</returns>
         </member>
         <member name="M:Exiled.Loader.Updater.FindAsset(System.String,Exiled.Loader.GHApi.Models.Release,Exiled.Loader.GHApi.Models.ReleaseAsset@)">
             <summary>
             Finds the specified asset.
             </summary>
-            <param name="assetName">Passes in the specified asset name.</param>
-            <param name="release">Passes in the release version.</param>
-            <param name="asset">The asset that is tied to the release.</param>
-            <returns>Whether it was able to find the asset.</returns>
+            <param name="assetName"> passes in the specified asset name.</param>
+            <param name="release"> passes in the release version.</param>
+            <param name="asset"> is the asset that is tied to the release.</param>
+            <returns>if it was able to find the asset or not.</returns>
         </member>
     </members>
 </doc>

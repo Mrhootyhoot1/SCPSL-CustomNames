@@ -2,8 +2,6 @@
 using System.Collections.Specialized;
 using Exiled.API.Features;
 using Exiled.Loader;
-using PlayerRoles;
-
 namespace Nameplugin
 {
     public class Plugin : Plugin<Config>
