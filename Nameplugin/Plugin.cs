@@ -8,15 +8,14 @@ namespace Nameplugin
     {
         public override string Name { get; } = "Nameplugin";
         public override string Prefix { get; } = "NP";
-        public override Version Version { get; } = new Version(1, 0, 0);
+        public override Version Version { get; } = new Version(1, 1, 0);
         public override string Author { get; } = "Mrhootyhoot1";
         public static bool nameon = true;
 
         public override void OnEnabled()
         {
             base.OnEnabled();
-
-    }
+        }
 
         public override void OnDisabled()
         {
@@ -27,7 +26,6 @@ namespace Nameplugin
         {
             public static bool nameon = true;
             public static bool cinfoon = true;
-
         }
     }
 }

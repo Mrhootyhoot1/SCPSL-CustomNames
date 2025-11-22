@@ -54,7 +54,7 @@ namespace Nameplugin
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
-            if (Plugin.EnabledCommands.cinfoon == true)
+            if (Plugin.EnabledCommands.cinfoon)
             {
                 var player = ExPlayer.Get((CommandSender)sender);
                 if (arguments.Count == 0)
@@ -80,9 +80,9 @@ namespace Nameplugin
     }
 
     [CommandHandler(typeof(RemoteAdminCommandHandler))]
-    public class EnableNamecommand : ICommand
+    public class ToggleNameCommand : ICommand
     {
-        public string Command => "enablename";
+        public string Command => "togglename";
         public string[] Aliases => new[] { "clientname", "namecommand", "crpn", "namecmd" };
 
         public string Description =>
@@ -90,7 +90,7 @@ namespace Nameplugin
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
-            if (Plugin.EnabledCommands.nameon == true)
+            if (Plugin.EnabledCommands.nameon)
             {
                 Plugin.EnabledCommands.nameon = false;
                 response = "name command disabled";
@@ -104,9 +104,9 @@ namespace Nameplugin
         }
     }
     [CommandHandler(typeof(RemoteAdminCommandHandler))]
-    public class EnableCinfoCommand : ICommand
+    public class ToggleCinfoCommand : ICommand
     {
-        public string Command => "EnableCinfo";
+        public string Command => "togglecinfo";
         public string[] Aliases => new[] { "cinfocmd", "cinfocommand", "cicmd", "Custominfoclientcommand" };
 
         public string Description =>
