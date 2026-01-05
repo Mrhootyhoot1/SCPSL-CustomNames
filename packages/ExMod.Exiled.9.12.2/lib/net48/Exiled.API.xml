@@ -1123,6 +1123,11 @@
             Represents the door in the <see cref="F:Exiled.API.Enums.RoomType.EzGateA"/> Armory.
             </summary>
         </member>
+        <member name="F:Exiled.API.Enums.DoorType.HczLoadingBay">
+            <summary>
+            Represents the door in <see cref="F:Exiled.API.Enums.RoomType.HczLoadingBay"/>.
+            </summary>
+        </member>
         <member name="T:Exiled.API.Enums.EffectCategory">
             <summary>
             An enum which represents the categories of an effect.
@@ -1404,22 +1409,22 @@
         </member>
         <member name="F:Exiled.API.Enums.EffectType.BecomingFlamingo">
             <summary>
-            Makes you a flamingo.
+            Makes you a flamingo <see cref="T:CustomPlayerEffects.BecomingFlamingo"/>.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Scp559">
             <summary>
-            Makes you a Child after eating Cake.
+            Makes you a Child after eating Cake <see cref="T:Scp559Effect"/>.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Scp956Target">
             <summary>
-            Scp956 found you.
+            Scp956 found you <see cref="T:Scp956Target"/>.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Snowed">
             <summary>
-            you are snowed.
+            you are snowed <see cref="T:Snowed"/>.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.EffectType.Scp1344Detected">
@@ -1515,6 +1520,21 @@
         <member name="F:Exiled.API.Enums.EffectType.Scp1509Resurrected">
             <summary>
             <see cref="T:CustomPlayerEffects.Scp1509Resurrected"/>.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Enums.EffectType.FocusedVision">
+            <summary>
+            <see cref="T:CustomPlayerEffects.FocusedVision"/>.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Enums.EffectType.AnomalousRegeneration">
+            <summary>
+            <see cref="T:CustomPlayerEffects.AnomalousRegeneration"/>.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Enums.EffectType.AnomalousTarget">
+            <summary>
+            <see cref="T:CustomPlayerEffects.AnomalousTarget"/>.
             </summary>
         </member>
         <member name="T:Exiled.API.Enums.ElevatorType">
@@ -1823,6 +1843,11 @@
         <member name="F:Exiled.API.Enums.GlassType.GateAArmory">
             <summary>
             Represents the window in <see cref="F:Exiled.API.Enums.RoomType.EzGateA"/>.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Enums.GlassType.HczLoadingBay">
+            <summary>
+            Represents the window in <see cref="F:Exiled.API.Enums.RoomType.HczLoadingBay"/>
             </summary>
         </member>
         <member name="T:Exiled.API.Enums.HazardType">
@@ -2694,6 +2719,11 @@
             Heavy Containment Zone's straight hall room with lava.
             </summary>
         </member>
+        <member name="F:Exiled.API.Enums.RoomType.HczLoadingBay">
+            <summary>
+            Heavy Containment Zone's T-intersection with a ramp in it.
+            </summary>
+        </member>
         <member name="T:Exiled.API.Enums.ScenesType">
             <summary>
             Unique identifier for the different types of Scenes the client and server can load.
@@ -2870,6 +2900,11 @@
         <member name="F:Exiled.API.Enums.Side.None">
             <summary>
             No team. Same as <see cref="F:PlayerRoles.Team.Dead"/>.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Enums.Side.Flamingos">
+            <summary>
+            Contains <see cref="F:PlayerRoles.RoleTypeId.Flamingo"/> and <see cref="F:PlayerRoles.RoleTypeId.AlphaFlamingo"/>. Same as <see cref="F:PlayerRoles.Team.Flamingos"/>.
             </summary>
         </member>
         <member name="T:Exiled.API.Enums.SpawnableFaction">
@@ -4960,11 +4995,6 @@
             A set of tools to use in-game C.A.S.S.I.E.
             </summary>
         </member>
-        <member name="P:Exiled.API.Features.Cassie.Announcer">
-            <summary>
-            Gets the <see cref="T:NineTailedFoxAnnouncer"/> singleton.
-            </summary>
-        </member>
         <member name="P:Exiled.API.Features.Cassie.IsSpeaking">
             <summary>
             Gets a value indicating whether C.A.S.S.I.E is currently announcing. Does not include decontamination or Alpha Warhead Messages.
@@ -4972,7 +5002,7 @@
         </member>
         <member name="P:Exiled.API.Features.Cassie.VoiceLines">
             <summary>
-            Gets a <see cref="T:System.Collections.Generic.IReadOnlyCollection`1"/> of <see cref="T:NineTailedFoxAnnouncer.VoiceLine"/> objects that C.A.S.S.I.E recognizes.
+            Gets a <see cref="T:System.Collections.Generic.IReadOnlyCollection`1"/> of <see cref="F:Cassie.CassieAnnouncementDispatcher.AllAnnouncements"/> objects that C.A.S.S.I.E recognizes.
             </summary>
         </member>
         <member name="M:Exiled.API.Features.Cassie.Message(System.String,System.Boolean,System.Boolean,System.Boolean)">
@@ -5026,8 +5056,15 @@
             Calculates the duration of a C.A.S.S.I.E message.
             </summary>
             <param name="message">The message, which duration will be calculated.</param>
-            <param name="rawNumber">Determines if a number won't be converted to its full pronunciation.</param>
-            <param name="speed">The speed of the message.</param>
+            <param name="obsolete1">An obsolete parameter.</param>
+            <param name="obsolete2">Another obsolete parameter.</param>
+            <returns>Duration (in seconds) of specified message.</returns>
+        </member>
+        <member name="M:Exiled.API.Features.Cassie.CalculateDuration(System.String)">
+            <summary>
+            Calculates the duration of a C.A.S.S.I.E message.
+            </summary>
+            <param name="message">The message, which duration will be calculated.</param>
             <returns>Duration (in seconds) of specified message.</returns>
         </member>
         <member name="M:Exiled.API.Features.Cassie.ConvertTeam(PlayerRoles.Team,System.String)">
@@ -10948,6 +10985,50 @@
             Gets or sets an used <see cref="T:Exiled.API.Enums.AmmoType"/> for this magazine.
             </summary>
         </member>
+        <member name="T:Exiled.API.Features.Items.FirearmModules.Primary.Scp127Magazine">
+            <summary>
+            Represents a normal magazine for SCP-127.
+            </summary>
+        </member>
+        <member name="M:Exiled.API.Features.Items.FirearmModules.Primary.Scp127Magazine.#ctor(InventorySystem.Items.Firearms.Modules.Scp127.Scp127MagazineModule)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Exiled.API.Features.Items.FirearmModules.Primary.Scp127Magazine"/> class.
+            </summary>
+            <param name="magazine"><inheritdoc cref="P:Exiled.API.Features.Items.FirearmModules.Primary.Scp127Magazine.MagazineModule"/></param>
+        </member>
+        <member name="P:Exiled.API.Features.Items.FirearmModules.Primary.Scp127Magazine.MagazineModule">
+            <inheritdoc cref="P:Exiled.API.Features.Items.FirearmModules.Primary.NormalMagazine.MagazineModule"/>
+        </member>
+        <member name="P:Exiled.API.Features.Items.FirearmModules.Primary.Scp127Magazine.KillBonus">
+            <summary>
+            Gets or sets the kill bonus.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.FirearmModules.Primary.Scp127Magazine.RankUpBonus">
+            <summary>
+            Gets or sets the rank up bonus.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.FirearmModules.Primary.Scp127Magazine.RegenerationPerTier">
+            <summary>
+            Gets or sets all settings.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.FirearmModules.Primary.Scp127Magazine.ActiveSetting">
+            <summary>
+            Gets the current setting.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.FirearmModules.Primary.Scp127Magazine.RemainingRegenPause">
+            <summary>
+            Gets or sets a pause in bullets regeneration process.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.FirearmModules.Primary.Scp127Magazine.RegenProgress">
+            <summary>
+            Gets or sets the amount of bullets that should be regenerated.
+            </summary>
+        </member>
         <member name="T:Exiled.API.Features.Items.FlashGrenade">
             <summary>
             A wrapper class for <see cref="T:InventorySystem.Items.ThrowableProjectiles.FlashbangGrenade"/>.
@@ -11396,7 +11477,7 @@
         </member>
         <member name="P:Exiled.API.Features.Items.Jailbird.Radius">
             <summary>
-            Gets or sets the radius of the Jailbird's hit register.
+            Gets or sets the radius of the Jailbird's hit radius.
             </summary>
         </member>
         <member name="P:Exiled.API.Features.Items.Jailbird.TotalDamageDealt">
@@ -11508,6 +11589,7 @@
             <summary>
             Gets the <see cref="T:InventorySystem.Items.Keycards.Snake.SnakeEngine"/> this encapsulates.
             </summary>
+            <remarks>Can be null, but shouldn't be during usage.</remarks>
         </member>
         <member name="M:Exiled.API.Features.Items.Keycards.ChaosKeycard.ToString">
             <summary>
@@ -11933,6 +12015,53 @@
             <param name="rank">The rank of the keycard (capped from 0-3).</param>
             <returns>The new <see cref="T:Exiled.API.Features.Items.Keycards.TaskForceKeycard"/>.</returns>
         </member>
+        <member name="T:Exiled.API.Features.Items.Marshmallow">
+            <summary>
+            A wrapper class for <see cref="T:InventorySystem.Items.MarshmallowMan.MarshmallowItem"/>.
+            </summary>
+        </member>
+        <member name="M:Exiled.API.Features.Items.Marshmallow.#ctor(InventorySystem.Items.MarshmallowMan.MarshmallowItem)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Exiled.API.Features.Items.Marshmallow"/> class.
+            </summary>
+            <param name="itemBase">The base <see cref="T:InventorySystem.Items.MarshmallowMan.MarshmallowItem"/> class.</param>
+        </member>
+        <member name="M:Exiled.API.Features.Items.Marshmallow.#ctor(ItemType,Exiled.API.Features.Player)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Exiled.API.Features.Items.Marshmallow"/> class.
+            </summary>
+            <param name="type">The <see cref="T:ItemType"/> of the marshmallow item.</param>
+            <param name="owner">The owner of the marshmallow item. Leave <see langword="null"/> for no owner.</param>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Marshmallow.Base">
+            <summary>
+            Gets the <see cref="T:InventorySystem.Items.MarshmallowMan.MarshmallowItem"/> that this class is encapsulating.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Marshmallow.Evil">
+            <summary>
+            Gets a value indicating whether this marshmallow man is evil.
+            </summary>
+            <remarks>See <see cref="M:Exiled.API.Features.Items.Marshmallow.MakeEvil(PlayerStatsSystem.AhpStat.AhpProcess)"/> in regards to making a marshmallow evil.</remarks>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Marshmallow.EvilAhpProcess">
+            <summary>
+            Gets or sets the <see cref="T:PlayerStatsSystem.AhpStat.AhpProcess"/> of the marshmallow man that would be used if he was evil.
+            </summary>
+        </member>
+        <member name="M:Exiled.API.Features.Items.Marshmallow.Cackle(System.Double,System.Single)">
+            <summary>
+            Cackles for the owner even if they are not evil.
+            </summary>
+            <param name="cooldown">How long until the player can cackle again (negative values do not affect current cooldown).</param>
+            <param name="duration">How long players near the marshmallow man get effected by <see cref="T:CustomPlayerEffects.TraumatizedByEvil"/>.</param>
+        </member>
+        <member name="M:Exiled.API.Features.Items.Marshmallow.MakeEvil(PlayerStatsSystem.AhpStat.AhpProcess)">
+            <summary>
+            Makes the owner of this marshmallow evil. You CANNOT undo this without resetting the player.
+            </summary>
+            <param name="evilProcess">The <see cref="T:PlayerStatsSystem.AhpStat.AhpProcess"/> of the new evil player.</param>
+        </member>
         <member name="T:Exiled.API.Features.Items.MicroHid">
             <summary>
             A wrapper class for <see cref="T:InventorySystem.Items.MicroHID.MicroHIDItem"/>.
@@ -12184,6 +12313,168 @@
             Clones current <see cref="T:Exiled.API.Features.Items.ExplosiveGrenade"/> object.
             </summary>
             <returns> New <see cref="T:Exiled.API.Features.Items.ExplosiveGrenade"/> object. </returns>
+        </member>
+        <member name="T:Exiled.API.Features.Items.Scp127">
+            <summary>
+            Represents SCP-127.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Features.Items.Scp127.CustomHsMax">
+            <summary>
+            Custom amount of max HS.
+            </summary>
+        </member>
+        <member name="M:Exiled.API.Features.Items.Scp127.#ctor(InventorySystem.Items.Firearms.Firearm)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Exiled.API.Features.Items.Scp127"/> class.
+            </summary>
+            <param name="itemBase"><inheritdoc cref="P:Exiled.API.Features.Items.Firearm.Base"/></param>
+        </member>
+        <member name="M:Exiled.API.Features.Items.Scp127.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Exiled.API.Features.Items.Scp127"/> class.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.ActiveHumeShieldSessions">
+            <summary>
+            Gets a collection of all active HS sessions.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.HumeModule">
+            <summary>
+            Gets the <see cref="T:InventorySystem.Items.Firearms.Modules.Scp127.Scp127HumeModule"/> instance.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.TierManagerModule">
+            <summary>
+            Gets the <see cref="T:InventorySystem.Items.Firearms.Modules.Scp127.Scp127TierManagerModule"/> instance.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.VoiceLineManagerModule">
+            <summary>
+            Gets the <see cref="T:InventorySystem.Items.Firearms.Modules.Scp127.Scp127VoiceLineManagerModule"/> instance.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.HsMax">
+            <summary>
+            Gets or sets the maximum amount of HS.
+            </summary>
+            <remarks>If setter is used, after tier chance this value won't be edited automatically.</remarks>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.ShieldRegenRate">
+            <summary>
+            Gets or sets a shield regeneration rate.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.ShieldDecayRate">
+            <summary>
+            Gets or sets a shield decay time.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.ShieldOnDamagePause">
+            <summary>
+            Gets or sets a pause before HS starts regeneration after damage being taken.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.UnequipDecayDelay">
+            <summary>
+            Gets or sets a delay before HS starts dropping after unequipment.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.HsRegeneration">
+            <summary>
+            Gets or sets a HumeShield regeneration.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.KillBonus">
+            <summary>
+            Gets or sets an experience bonus for kill.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.PassiveExpAmount">
+            <summary>
+            Gets or sets an amount of passive experience increase.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.PassiveExpInterval">
+            <summary>
+            Gets or sets an interval of passive experience increase.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.TierThresholds">
+            <summary>
+            Gets or sets a collection of all tier thresholds.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.CurrentTier">
+            <summary>
+            Gets or sets current tier.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.Experience">
+            <summary>
+            Gets or sets the current experience amount.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.InstanceRecord">
+            <summary>
+            Gets the instance record.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.OwnerStats">
+            <summary>
+            Gets the Owner stats.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.VoiceTriggers">
+            <summary>
+            Gets or sets all Voice Triggers.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Items.Scp127.Friends">
+            <summary>
+            Gets a collection of players that are friends with this SCP-127.
+            </summary>
+        </member>
+        <member name="M:Exiled.API.Features.Items.Scp127.IncreaseExperience(System.Single)">
+            <summary>
+            Increases experience.
+            </summary>
+            <param name="amount">Amount to add.</param>
+        </member>
+        <member name="M:Exiled.API.Features.Items.Scp127.SetOwnerStats(System.Single)">
+            <summary>
+            Sets owner stats.
+            </summary>
+            <param name="exp">New experience amount.</param>
+        </member>
+        <member name="M:Exiled.API.Features.Items.Scp127.SendTierStats(InventorySystem.Items.Firearms.Modules.Scp127.Scp127Tier,System.Byte)">
+            <summary>
+            Sends tier stats.
+            </summary>
+            <param name="tier">New tier.</param>
+            <param name="progress">New progress.</param>
+        </member>
+        <member name="M:Exiled.API.Features.Items.Scp127.TryPlayVoiceLine(InventorySystem.Items.Firearms.Modules.Scp127.Scp127VoiceLinesTranslation,InventorySystem.Items.Firearms.Modules.Scp127.Scp127VoiceTriggerBase.VoiceLinePriority)">
+            <summary>
+            Tries to play voice line.
+            </summary>
+            <param name="voiceLine">Voice line to play.</param>
+            <param name="priority">Priority of the play.</param>
+            <returns><c>true</c> if voice line has been played successfully. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Exiled.API.Features.Items.Scp127.HasFriendship(Exiled.API.Features.Player)">
+            <summary>
+            Checks if this instance of SCP-127 and <paramref name="player"/> have friendship.
+            </summary>
+            <param name="player">Target to check.</param>
+            <returns><c>true</c> if this instance of SCP-127 and <paramref name="player"/> have friendship. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Exiled.API.Features.Items.Scp127.AddFriend(Exiled.API.Features.Player)">
+            <summary>
+            Adds player as a friend.
+            </summary>
+            <param name="player">Target to be added.</param>
         </member>
         <member name="T:Exiled.API.Features.Items.Scp1344">
             <summary>
@@ -12793,6 +13084,12 @@
             <summary>
             Gets the base <see cref="T:Interactables.Interobjects.ElevatorChamber"/>.
             </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Lift.ElevatorAutoReturn">
+            <summary>
+            Gets the base <see cref="P:Exiled.API.Features.Lift.ElevatorAutoReturn"/>.
+            </summary>
+            <remarks>Would be null for any elevator that do not used <see cref="T:Interactables.Interobjects.ElevatorAutoReturn"/>.</remarks>
         </member>
         <member name="P:Exiled.API.Features.Lift.Doors">
             <summary>
@@ -15866,7 +16163,7 @@
         </member>
         <member name="T:Exiled.API.Features.Pickups.Scp1509Pickup">
             <summary>
-            A wrapper class for a Radio pickup.
+            A wrapper class for a Scp1509 pickup.
             </summary>
         </member>
         <member name="M:Exiled.API.Features.Pickups.Scp1509Pickup.#ctor(InventorySystem.Items.Scp1509.Scp1509Pickup)">
@@ -17331,6 +17628,13 @@
             <param name="name">The rank name to be set.</param>
             <param name="group">The group to be set.</param>
         </member>
+        <member name="M:Exiled.API.Features.Player.TrySetRank(System.String)">
+            <summary>
+            If the rank(group) exists in the remote admin config, it will assign it to the player.
+            </summary>
+            <param name="name">The rank name to be set.</param>
+            <returns><see langword="true"/> if the rank(group) was found and successfully assigned, <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:Exiled.API.Features.Player.Handcuff">
             <summary>
             Handcuff the player as administrator.
@@ -17353,6 +17657,13 @@
             </summary>
             <param name="broadcast">The <see cref="T:Exiled.API.Features.Broadcast"/> to be broadcasted.</param>
             <param name="shouldClearPrevious">Clears all player's broadcasts before sending the new one.</param>
+        </member>
+        <member name="M:Exiled.API.Features.Player.CassieAnnouncement(Cassie.CassieAnnouncement)">
+            <summary>
+            Send an <see cref="T:Cassie.CassieAnnouncement"/> to the player.
+            </summary>
+            <param name="cassieAnnouncement">The <see cref="T:Cassie.CassieAnnouncement"/> to be broadcasted.</param>
+            <returns><see langword="0"/> if Cassie failed to play it or it's play nothing, otherwise it's return the duration of the annoucement.</returns>
         </member>
         <member name="M:Exiled.API.Features.Player.DropItem(Exiled.API.Features.Items.Item,System.Boolean)">
             <summary>
@@ -17510,7 +17821,7 @@
             <param name="attacker">The <see cref="T:Exiled.API.Features.Player"/> attacking player.</param>
             <param name="amount">The <see langword="float"/> amount of damage to deal.</param>
             <param name="damageType">The <see cref="T:Exiled.API.Enums.DamageType"/> of the damage dealt.</param>
-            <param name="cassieAnnouncement">The <see cref="T:Exiled.API.Features.DamageHandlers.DamageHandlerBase.CassieAnnouncement"/> cassie announcement to make if the damage kills the player.</param>
+            <param name="cassieAnnouncement">The <see cref="M:Exiled.API.Features.Player.CassieAnnouncement(Cassie.CassieAnnouncement)"/> cassie announcement to make if the damage kills the player.</param>
         </member>
         <member name="M:Exiled.API.Features.Player.Hurt(Exiled.API.Features.Player,System.Single,Exiled.API.Enums.DamageType,Exiled.API.Features.DamageHandlers.DamageHandlerBase.CassieAnnouncement,System.String)">
             <summary>
@@ -17519,7 +17830,7 @@
             <param name="attacker">The <see cref="T:Exiled.API.Features.Player"/> attacking player.</param>
             <param name="amount">The <see langword="float"/> amount of damage to deal.</param>
             <param name="damageType">The <see cref="T:Exiled.API.Enums.DamageType"/> of the damage dealt.</param>
-            <param name="cassieAnnouncement">The <see cref="T:Exiled.API.Features.DamageHandlers.DamageHandlerBase.CassieAnnouncement"/> cassie announcement to make if the damage kills the player.</param>
+            <param name="cassieAnnouncement">The <see cref="M:Exiled.API.Features.Player.CassieAnnouncement(Cassie.CassieAnnouncement)"/> cassie announcement to make if the damage kills the player.</param>
             <param name="deathText"> The <see langword="string"/> death text to appear on <see cref="T:Exiled.API.Features.Player"/> screen. </param>
         </member>
         <member name="M:Exiled.API.Features.Player.Hurt(Exiled.API.Features.Player,System.Single,Exiled.API.Enums.DamageType,Exiled.API.Features.DamageHandlers.DamageHandlerBase.CassieAnnouncement,System.String,System.Boolean)">
@@ -17529,7 +17840,7 @@
             <param name="attacker">The <see cref="T:Exiled.API.Features.Player"/> attacking player.</param>
             <param name="amount">The <see langword="float"/> amount of damage to deal.</param>
             <param name="damageType">The <see cref="T:Exiled.API.Enums.DamageType"/> of the damage dealt.</param>
-            <param name="cassieAnnouncement">The <see cref="T:Exiled.API.Features.DamageHandlers.DamageHandlerBase.CassieAnnouncement"/> cassie announcement to make if the damage kills the player.</param>
+            <param name="cassieAnnouncement">The <see cref="M:Exiled.API.Features.Player.CassieAnnouncement(Cassie.CassieAnnouncement)"/> cassie announcement to make if the damage kills the player.</param>
             <param name="deathText">The <see langword="string"/> death text to appear on <see cref="T:Exiled.API.Features.Player"/> screen.</param>
             <param name="overrideCassieForAllRole">Whether to play Cassie for non-SCPs as well.</param>
         </member>
@@ -19811,6 +20122,17 @@
             Gets a <see cref="P:Exiled.API.Features.Roles.FpcRole.SpectatableModuleBase"/> for this role.
             </summary>
         </member>
+        <member name="M:Exiled.API.Features.Roles.FpcRole.TryGetBoneTransform(UnityEngine.HumanBodyBones,UnityEngine.Transform@)">
+            <summary>
+            Tries to get the <see cref="T:UnityEngine.Transform"/> of a specified <see cref="T:UnityEngine.HumanBodyBones"/> bone.
+            </summary>
+            <param name="bone">The bone to get the <see cref="T:UnityEngine.Transform"/> of.</param>
+            <param name="boneTransform">
+            When this method returns, contains the <see cref="T:UnityEngine.Transform"/> of the specified bone, if found;
+            otherwise, <c>null</c>.
+            </param>
+            <returns><c>true</c> if the bone transform was found; otherwise, <c>false</c>.</returns>
+        </member>
         <member name="M:Exiled.API.Features.Roles.FpcRole.ResetStamina(System.Boolean)">
             <summary>
             Resets the <see cref="T:Exiled.API.Features.Player"/>'s stamina.
@@ -20859,6 +21181,11 @@
         <member name="P:Exiled.API.Features.Roles.Scp096Role.AttackPossible">
             <summary>
             Gets a value indicating whether SCP-096 can attack.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Roles.Scp096Role.HeadTransform">
+            <summary>
+            Gets the head transform of SCP-096's character model.
             </summary>
         </member>
         <member name="P:Exiled.API.Features.Roles.Scp096Role.ChargeCooldown">
@@ -22545,6 +22872,11 @@
         <member name="P:Exiled.API.Features.Server.Tps">
             <summary>
             Gets the actual ticks per second of the server.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Server.SmoothTps">
+            <summary>
+            Gets the average ticks per second of the server.
             </summary>
         </member>
         <member name="P:Exiled.API.Features.Server.MaxTps">
